@@ -9,19 +9,25 @@ public class Player : MonoBehaviour
     void Awake()
     {
         //여기서 미리 생성해준다. 생성해줄때의 부모는 지금 이 스크립트가 달려있는 플레이어로한다.
+        TestScript1.CreatePool<PoolObj>(bulletPrefab, this.transform);
+
     }
 
 
     void Start()
     {
-        
+        StartCoroutine(SpawnBullet());
     }
 
     IEnumerator SpawnBullet() {
         while(true) {
-            if(Input.GetButtonDown("Fire1")) {
-                //여기서 생성을 해준다.
+            if(Input.GetButton("Fire1")) {
+                Debug.Log("에이 시팔");
 
+                PoolObj Obj = TestScript1.GetItem<PoolObj>();
+                Debug.Log("에이 시팔2");
+
+                // shootObj.gameObject.SetActive(true);
             }
             yield return ws;
         }
